@@ -14,7 +14,6 @@ class quickUnion {
 		const secondaryRoot = this.find(treeSecondary);
 
 		if (primaryRoot === secondaryRoot) return;
-		//
 		this.forest[primaryRoot] = this.forest[secondaryRoot];
 	}
 
@@ -25,9 +24,7 @@ class quickUnion {
 	//查找元素所對應的編號
 	find(id) {
 		if (id < 0 || id >= this.forest.length) return;
-		// console.log("id", id);
 		while (id !== this.forest[id]) id = this.forest[id];
-		// console.log("forest:", this.forest[4]);
 		return id;
 	}
 }
@@ -49,9 +46,8 @@ class weightedQuickUnion {
 		const len = this.forest.length;
 		for (let i = 0; i < len; i++) {
 			this.forest[i] = i;
-			//size
+			// 紀錄size
 			this.branch[i] = 1;
-			console.log(this.branch);
 		}
 	}
 
@@ -66,7 +62,6 @@ class weightedQuickUnion {
 		if (this.branch[primaryRoot] < this.branch[secondaryRoot]) {
 			this.forest[primaryRoot] = this.forest[secondaryRoot];
 			this.branch[secondaryRoot] += this.branch[primaryRoot];
-			console.log("123");
 		} else {
 			this.forest[secondaryRoot] = this.forest[primaryRoot];
 			console.log("primaryRoot", this.branch[primaryRoot]);
